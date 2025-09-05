@@ -9,7 +9,7 @@ y = df['preco']
 
 models = train_price_models(X, y)
 
-print("\nmetricas dos modelos:")
+print("\nas dos modelos:")
 print(f"- Linear Regression -> R²: {models['linear_regression']['r2']:.2f}, MSE: {models['linear_regression']['mse']:.2f}")
 print(f"- Random Forest    -> R²: {models['random_forest']['r2']:.2f}, MSE: {models['random_forest']['mse']:.2f}")
 
