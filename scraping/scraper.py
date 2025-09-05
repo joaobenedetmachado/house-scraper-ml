@@ -8,7 +8,6 @@ import csv
 import os
 from datetime import datetime
 
-# Configuração do Chrome
 options = Options()
 options.headless = True
 prefs = {"profile.managed_default_content_settings.images": 2}
@@ -39,24 +38,23 @@ try:
     
     cards = soup.find_all('section', class_='olx-adcard')
     
-    print(f"{len(cards)} imóveis encontrados")
+    print(f"{len(cards)} encontrados")
     
     links_existentes = set()
     csv_path = 'data/raw/raw.csv'
     
-    # Criar diretório se não existir
     os.makedirs(os.path.dirname(csv_path), exist_ok=True)
     
     if os.path.exists(csv_path) and os.path.getsize(csv_path) > 0:
         with open(csv_path, 'r', newline='', encoding='utf-8') as csvfile:
             reader = csv.reader(csvfile)
-            next(reader, None)  # Pular cabeçalho se existir
+            next(reader, None)  
             for row in reader:
                 if row and len(row) > 0:
                     links_existentes.add(row[0])
-        print(f"Encontrados {len(links_existentes)} links já processados")
+        print(f"{len(links_existentes)} links antes processados")
     else:
-        print("CSV vazio ou não existe - começando do zero")
+        print("comecando do zero")
     
     file_exists = os.path.exists(csv_path) and os.path.getsize(csv_path) > 0
     
